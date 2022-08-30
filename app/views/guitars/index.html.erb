@@ -1,0 +1,23 @@
+  <div class="table_container">
+    <% unless @guitars.count.zero? %>
+    <div class="table__xls__link">
+      <%= link_to guitars_path(format: :xlsx) do %>
+        <i class="fa-solid fa-download"></i>
+      <% end %>
+    </div>
+    <% end %>
+    <table>
+      <thead>
+        <tr>
+        <th scope="col"> </th>
+        <% @guitars.each do |guitar| %>
+          <th scope="col"><%= guitar.name %></th>
+        <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render 'table_body', {guitars:@guitars, guitars_categories:@guitars_categories} %>
+      </tbody>
+    </table>
+      <%= render 'table_helper' %>
+  </div>

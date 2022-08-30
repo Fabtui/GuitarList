@@ -1,0 +1,12 @@
+<div class="container edit__container">
+  <%= render 'shared/back_link' %>
+
+  <h3>Editing <%= @guitar.brand %> <%= @guitar.name %></h3>
+
+  <%= render 'form', guitar: @guitar %>
+
+  <div class="delete-link-container">
+    <button class='btn btn-danger' id='delete-button'>Delete</button>
+    <%= link_to 'Delete', guitar_path(@guitar.id), method: :delete, class:'btn btn-danger d-none', id:'delete-link' %>
+  </div>
+</div>

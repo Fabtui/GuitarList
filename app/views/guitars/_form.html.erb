@@ -1,0 +1,128 @@
+<%= simple_form_for @guitar do |f| %>
+  <%#= @guitar.new_record? %>
+  <div class="row">
+    <div class="col-md">
+      <div class="form__title form__title__infos" data-name="form__infos">
+        <%= image_tag("icon-guitar-misc.png") %>
+        <h4>Infos</h4>
+        <i class="fa-solid fa-angle-down" id="form__infos__icon"></i>
+      </div>
+      <div class="form__infos form__container form__hidden">
+        <div class="form__content">
+        <%= f.input :brand, collection: BRANDS.sort %>
+        <%= f.input :name %>
+        <%= f.input :year, collection: 1940..Time.now.year %>
+        <%= f.input :serial_number %>
+        <%= f.input :made_in, collection: COUNTRIES.sort, label:'Country' %>
+        <%= f.input :artist %>
+        <%= f.input :purchase_date, collection: 1950..Time.now.year %>
+        <%= f.input :price, label: 'List Price ($)' %>
+        </div>
+      </div>
+      <div class="form__title form__title__body" data-name="form__body">
+        <%= image_tag("icon-guitar-body.png")%>
+        <h4>Body</h4>
+        <i class="fa-solid fa-angle-down" id="form__body__icon"></i>
+      </div>
+      <div class="form__body form__container form__hidden">
+        <%= f.input :color %>
+        <%= f.input :body_wood, collection: ['Alder','Basswood', 'Black Limba', 'Koa','Maple', 'Mohagany','Okoume', 'Swamp Ash', 'Walnut'] %>
+        <%= f.input :body_top_wood, collection: ['Alder','Basswood', 'Black Limba', 'Koa','Maple', 'AAA Flamed Maple', 'Flamed Maple' ,'Quilted Maple', 'Mohagany', 'Poplar Burl','Okoume', 'Swamp Ash', 'Walnut', 'Zebra Wood', 'Carved AA Maple'] %>
+        <%= f.input :body_finish %>
+      </div>
+      <div class="form__title form__title__pickups" data-name="form__pickups">
+        <%= image_tag("icon-guitar-electronics.png") %>
+        <h4>Pickups</h4>
+        <i class="fa-solid fa-angle-down" id="form__pickups__icon"></i>
+      </div>
+      <div class="form__pickups form__container form__hidden">
+        <%= f.input :pickups_configuration, hint:'HSH, SSS,...' %>
+        <%= f.input :neck_pickup_id, label: 'Neck Pickup', collection: @pickups %>
+        <%= f.input :center_pickup_id, label: 'Center Pickup', collection: @pickups %>
+        <%= f.input :bridge_pickup_id, label: 'Bridge Pickup', collection: @pickups %>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="form__title form__title__neck" data-name="form__neck">
+        <%= image_tag("icon-guitar-neck.png") %>
+        <h4>Neck</h4>
+        <i class="fa-solid fa-angle-down" id="form__neck__icon"></i>
+      </div>
+      <div class="form__neck form__container form__hidden">
+        <%= f.input :neck_wood, collection: ['Alder','Basswood', 'Black Limba', 'Koa','Maple', 'Mohagany','Okoume', 'Swamp Ash', 'Walnut']  %>
+        <%= f.input :fingerboard_wood, collection: ['Maple','Ebony', 'Rosewood', 'Richlite', 'Birdseye Maple', 'Roasted Maple', 'Flamed Maple'] %>
+        <%= f.input :scale_length, label:'Scale Length (mm)' %>
+        <%= f.input :neck_shape %>
+        <%= f.input :neck_finish %>
+        <%= f.input :neck_attachment %>
+        <%= f.input :neck_radius, label:'Neck Radius (mm)' %>
+        <%= f.input :neck_width_nut, label:'Neck Width At Nut (mm)' %>
+        <%= f.input :neck_width_last_fret, label:'Neck Width At Last Fret (mm)' %>
+        <%= f.input :frets_number, collection: 21..27 %>
+        <%= f.input :frets_type %>
+        <%= f.input :nut_material %>
+      </div>
+      <div class="form__title form__title__hardware" data-name="form__hardware">
+        <%= image_tag("icon-guitar-hardware.png") %>
+        <h4>Hardware</h4>
+        <i class="fa-solid fa-angle-down" id="form__hardware__icon"></i>
+      </div>
+      <div class="form__hardware form__container form__hidden">
+        <%= f.input :bridge %>
+        <%= f.input :tuning_machines %>
+      </div>
+       <div class="form__title form__title__photos" data-name="form__photos">
+        <%= image_tag("icon-guitar-photos.png") %>
+        <h4>Photos</h4>
+        <i class="fa-solid fa-angle-down" id="form__photos__icon"></i>
+      </div>
+      <div class="form__photos form__container form__hidden">
+        <div class="form__photo">
+          <%= f.input :photo, as: :file, label:'Main Photo', input_html: { id: 'main-photo', class:'photo-input' }%>
+          <% if @guitar.photo_id %>
+            <%= image_tag "http://res.cloudinary.com/drzsrupmq/image/upload/v1/development/#{@guitar.photo_id}", width: 200, id: "photo-main-photo" %>
+          <% else %>
+            <%= image_tag "", width: 200, class: "hidden", id: "photo-main-photo" %>
+          <% end %>
+        </div>
+        <div class="form__photos">
+          <div class="form__photo">
+            <%= f.input :photos0, as: :file, input_html: { class:'photo-input', id:'input-1' }, label:'Secondary Photo 1' %>
+            <% if @guitar.photos_ids[0] %>
+              <%= image_tag "https://res.cloudinary.com/drzsrupmq/image/upload/v1661458045/GuitarList/#{@guitar.photos_ids[0]}", width: 200, id: "photo-input-1" %>
+            <% else %>
+              <%= image_tag "", width: 200, class: "hidden", id: "photo-input-1" %>
+            <% end %>
+          </div>
+          <div class="form__photo">
+            <%= f.input :photos1, as: :file, input_html: { class:'photo-input', id:'input-2' }, label:'Secondary Photo 2' %>
+            <% if @guitar.photos_ids[1] %>
+              <%= image_tag "https://res.cloudinary.com/drzsrupmq/image/upload/v1661458045/GuitarList/#{@guitar.photos_ids[1]}", width: 200, id: "photo-input-2" %>
+            <% else %>
+              <%= image_tag "", width: 200, class: "hidden", id: "photo-input-2" %>
+            <% end %>
+          </div>
+          <div class="form__photo">
+            <%= f.input :photos2, as: :file, input_html: { class:'photo-input', id:'input-3' }, label:'Secondary Photo 3' %>
+            <% if @guitar.photos_ids[2] %>
+              <%= image_tag "https://res.cloudinary.com/drzsrupmq/image/upload/v1661458045/GuitarList/#{@guitar.photos_ids[2]}", width: 200, id: "photo-input-3" %>
+            <% else %>
+              <%= image_tag "", width: 200, class: "hidden", id: "photo-input-3" %>
+            <% end %>
+          </div>
+          <div class="form__photo">
+            <%= f.input :photos3, as: :file, input_html: { class:'photo-input', id:'input-4' }, label:'Secondary Photo 4' %>
+            <% if @guitar.photos_ids[3] %>
+              <%= image_tag "https://res.cloudinary.com/drzsrupmq/image/upload/v1661458045/GuitarList/#{@guitar.photos_ids[3]}", width: 200, id: "photo-input-4" %>
+            <% else %>
+              <%= image_tag "", width: 200, class: "hidden", id: "photo-input-4" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form__submit__button">
+    <%= f.button :submit, class:"btn btn-primary" %>
+  </div>
+<% end %>

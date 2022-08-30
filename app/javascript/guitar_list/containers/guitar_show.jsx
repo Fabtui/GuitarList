@@ -63,9 +63,9 @@ class GuitarShow extends React.Component {
       const picClass = this.state.hidden ? `guitar__image__zoom__container hidden` : `guitar__image__zoom__container`
       const closeClass = this.state.hidden ? 'close__button' : 'close__button show__close__button'
       return <div className='guitar__show'>
-          <h3>{guitar.brand} {guitar.name}</h3>
-          <div className="guitar__show__container">
-            <div className="guitar__show__infos">
+          {/* <h3>{guitar.brand} {guitar.name}</h3>
+          <div className="guitar__show__container"> */}
+            {/* <div className="guitar__show__infos">
               <table className="table guitar__show__table">
                 <tbody>
                   <img src={miscLogo} alt="misc-logo" />
@@ -235,7 +235,7 @@ class GuitarShow extends React.Component {
             </div>
               <img src={this.state.selectedPic}/>
           </div>
-        </div>
+        </div> */}
       </div>
     } else {
     return <div className='guitar__show guitar__show__empty'>

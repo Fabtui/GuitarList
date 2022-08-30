@@ -1,36 +1,37 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+<% unless (controller_name == 'pages' && action_name == 'home') || controller_name == 'registrations' %>
+  <div class="navbar navbar-guitarlist">
+    <div class="navbar__item">
+      <%= link_to "/", class: "navbar-brand" do %>
+        <h4>GuitarList</h4>
+      <% end %>
+    </div>
+    <div class="navbar__item" id="menu__bars">
+      <div class="nav-item">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+    <div class="nav-dropdown menu__hidden">
+      <ul>
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+          <% unless (controller_name == 'pages' && action_name == 'home') %>
+          <li class="nav-dropdown-item">
+            <%= link_to 'Guitars', root_path %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+          <% end %>
+          <%= %>
+          <li class="nav-dropdown-item">
+            <%= link_to 'New Guitar', new_guitar_path %>
           </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+          <li class="nav-dropdown-item">
+            <%= link_to 'New Pickup', new_pickup_path %>
           </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <li class="nav-dropdown-item">
+            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+              <i id='menu__icon' class="fa-solid fa-arrow-right-from-bracket"></i>
+            <% end %>
           </li>
         <% end %>
       </ul>
     </div>
   </div>
-</div>
+<% end %>
