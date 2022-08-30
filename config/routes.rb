@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  resources :guitars
+  resources :pickups
   devise_for :users
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :guitars, only: %i[index show create]
+      resources :pickups, only: %i[index]
+    end
+  end
 end
