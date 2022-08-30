@@ -1,0 +1,52 @@
+.pickup__title {
+  h5 {
+    margin: 0;
+  }
+  svg {
+    color: rgba(0, 0, 0, 0.5);
+    margin-left: 8px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.pickup__details {
+  background-color: rgba(231, 231, 231, 0.3);
+  transition: 0.4s;
+  max-height: 100vh;
+  overflow: hidden;
+  padding: 8px 16px 0 16px;
+  border-radius: 8px;
+}
+
+.hidden {
+  background-color: transparent;
+  transition: 0.4s;
+  max-height: 0;
+}
+
+.pickup__tone__row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.tone__col {
+  margin: 8px;
+}
+
+.tone__guide {
+  border-radius: 2px;
+  width: 100%;
+  height: 6px;
+  margin-bottom: 5px;
+  background-color: rgb(190, 190, 190);
+}
+
+.tone__guide__active {
+  background-color: $blood;
+}
+
+.tone__guide__half__active {
+  background-color: rgba(255, 0, 0, 0.4);
+}

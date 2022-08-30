@@ -10,3 +10,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "guitars/index";
+@import "device/index.scss";
+
+::-webkit-scrollbar {
+  display: none;
+}
