@@ -88,6 +88,7 @@
 }
 
 .guitar__images__item {
+  position: relative;
   margin-bottom: 12px;
   width: 18vh;
   height: 18vh;
@@ -103,6 +104,16 @@
   &:hover {
     cursor: pointer;
   }
+}
+
+.spinner-border {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+
+.hidden-photo {
+  display: none;
 }
 
 @media (max-width: 700px) {
