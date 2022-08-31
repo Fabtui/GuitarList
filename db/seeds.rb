@@ -228,7 +228,7 @@ Guitar.create!(
   serial_number: 'MZ7017048',
   year: 2007,
   photo_id: 'lbyh9e6p3ikhcuuh9xp2ivl6ctkt',
-  photos_ids: %w[StratocasterClassicPlayer'60s-0" StratocasterClassicPlayer'60s-1" StratocasterClassicPlayer'60s-2" StratocasterClassicPlayer'60s-3"]
+  photos_ids: %w[StratocasterClassicPlayer'60s-0.jpeg" StratocasterClassicPlayer'60s-1.jpeg" StratocasterClassicPlayer'60s-2.jpeg" StratocasterClassicPlayer'60s-3.jpeg"]
 )
 
 Guitar.create!(
@@ -259,7 +259,7 @@ Guitar.create!(
   artist: 'Joe Striani',
   price: 1499,
   photo_id: 'vsl276ssdu5f5g5k7mzpp8m4hk6f',
-  photos_ids: %w[JS1000-0" JS1000-1" JS1000-2" JS1000-3"]
+  photos_ids: %w[JS1000-0.jpeg" JS1000-1.jpeg" JS1000-2.jpeg" JS1000-3.jpeg"]
 )
 
 Guitar.create!(
@@ -357,7 +357,7 @@ Guitar.create!(
   neck_shape: 'JEM',
   serial_number: '914831',
   photo_id: 'nz4plr06smo7tel5we73taogmz3n',
-  photos_ids: %w[JEM77-0 JEM77-1 JEM77-2 JEM77-3"]
+  photos_ids: %w[JEM77-0 JEM77-1 JEM77-2 JEM77-3.jpeg"]
 )
 
 Guitar.create!(
@@ -464,7 +464,7 @@ Guitar.create!(
   tuning_machines: 'Custom77 MHDC (18:1)',
   bridge: 'Tune-O-Matic style',
   photo_id: 'm0co1pc3caz2r11sv6wz8batoo54',
-  photos_ids: %w[London'sBurningCS3-0 London'sBurningCS3-1 London'sBurningCS3-2 London'sBurningCS3-3]
+  photos_ids: %w[London'sBurningCS3-0 London'sBurningCS3-1 London'sBurningCS3-2 London'sBurningCS3-3.jpeg]
 )
 
 p Guitar.count
