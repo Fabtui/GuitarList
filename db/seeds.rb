@@ -464,7 +464,7 @@ Guitar.create!(
   tuning_machines: 'Custom77 MHDC (18:1)',
   bridge: 'Tune-O-Matic style',
   photo_id: 'm0co1pc3caz2r11sv6wz8batoo54',
-  photos_ids: %w[London'sBurningCS3-0 London'sBurningCS3-1 London'sBurningCS3-2 London'sBurningCS3-3.jpeg]
+  photos_ids: %w[London'sBurningCS3-0.jpeg London'sBurningCS3-1.jpeg London'sBurningCS3-2.jpeg London'sBurningCS3-3.jpeg]
 )
 
 p Guitar.count
