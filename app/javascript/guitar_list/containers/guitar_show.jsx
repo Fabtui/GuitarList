@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import PickupShow from '../components/pickup_show';
+import ImageLoad from '../components/image_load'
 import miscLogo from '../../../assets/images/icon-guitar-misc.png';
 import bodyLogo from '../../../assets/images/icon-guitar-body.png';
 import neckLogo from '../../../assets/images/icon-guitar-neck.png';
@@ -222,7 +223,7 @@ class GuitarShow extends React.Component {
                 { guitar.photos_ids.length > 0 ?
                 guitar.photos_ids.map(photo =>
                 <div onClick={(e) => {this.displayPic(); this.selectPic(e); this.secondaryPicSelected();}} className="guitar__images__item" key={photo} >
-                  <img src={`https://res.cloudinary.com/drzsrupmq/image/upload/v1661442456/GuitarList/${photo}`}/>
+                  <ImageLoad image={photo}/>
                 </div>) : ''
                 }
               </div>
