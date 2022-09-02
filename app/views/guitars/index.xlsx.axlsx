@@ -2,7 +2,7 @@ wb = xlsx_package.workbook
 wb.styles do |style|
   highlight_cell = style.add_style(bg_color: "EFC376")
   wb.add_worksheet(name: "Evenements") do |sheet|
-    sheet.add_row ['GuitarList']
+    sheet.add_row ["GuitarList", "#{current_user.email}"]
     sheet.add_row ['']
     guitar_name_row = ['']
     @guitars.each do |guitar|
@@ -13,11 +13,17 @@ wb.styles do |style|
     centered = { alignment: { horizontal: :center } }
     size = { sz: 11 }
     background_color = { bg_color: 'e0e0e0' }
+    letters = ('A'..'Z').to_a
+    title_cells = []
+    (1..@guitars.length).each { |i| title_cells << "#{letters[i]}3" }
+    sheet.add_style 'A1:A1', b: true, sz: 16
+    sheet.add_style ["B3:#{title_cells.last}"], bold, size, centered, background_color
+    sheet.add_border title_cells.map {|t| "#{t}:#{t}" }
 
   @guitars_categories.each do |category|
     if category[0] == 'scale_length' || category[0] == 'neck_radius' || category[0] == 'neck_width_nut' || category[0] == 'neck_width_last_fret'
       row = ["#{category[1]} (mm)"]
-    elsif category[0] == 'price' 
+    elsif category[0] == 'price'
       row = ["#{category[1]} ($)"]
     else
       row = [category[1]]
@@ -56,6 +62,17 @@ wb.styles do |style|
     end
     sheet.add_row row
   end
-
+    first_col_cells = []
+    for i in 4..@guitars_categories.size+3
+      first_col_cells << "A#{i}:A#{i}"
+    end
+    sheet.add_border first_col_cells
+    sheet.add_style first_col_cells, bold, size, background_color
+    body_cells = []
+    for i in 4..@guitars_categories.size+3
+      @guitars.each_with_index {|g , index| body_cells << "#{letters[index + 1]}#{i}:#{letters[index + 1]}#{i}" }
+    end
+    sheet.add_style ["B4:#{letters[@guitars.count]}#{@guitars_categories.size+3}"], centered
+    sheet.add_border body_cells
   end
 end
