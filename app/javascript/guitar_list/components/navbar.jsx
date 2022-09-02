@@ -1,6 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightFromBracket, faBars } from '@fortawesome/free-solid-svg-icons'
+import navLogo from '../../../assets/images/logo.png';
 import { connect } from 'react-redux';
 
 class Navbar extends React.Component {
@@ -33,7 +34,10 @@ class Navbar extends React.Component {
     const menuIconClassname = this.state.fold? 'fa-solid fa-bars' : 'fa-solid fa-xmark'
     return <div className="navbar navbar-guitarlist">
         <div className="navbar__item">
-          <a href='/' className='navbar-brand'><h4>GuitarList</h4></a>
+          <a href='/' className='navbar-brand'>
+            <img src={navLogo} alt="nav-logo" id='nav__logo'/>
+            <h4>GuitarList</h4>
+          </a>
         </div>
         <div className="navbar__item" id="menu__bars" onClick={this.handleClick}>
           <div className="nav-item">
