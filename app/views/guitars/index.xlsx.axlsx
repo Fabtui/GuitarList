@@ -16,7 +16,7 @@ wb.styles do |style|
     letters = ('A'..'Z').to_a
     title_cells = []
     (1..@guitars.length).each { |i| title_cells << "#{letters[i]}3" }
-    sheet.add_style 'A1:A1', b: true, sz: 16
+    sheet.add_style 'A1:A1', sz: 16
     sheet.add_style ["B3:#{title_cells.last}"], bold, size, centered, background_color
     sheet.add_border title_cells.map {|t| "#{t}:#{t}" }
 
