@@ -48,9 +48,11 @@
   <th scope="col">Photo</th>
   <% guitars.each do |guitar| %>
     <td>
-      <div class="table__photo__content">
-        <%= image_tag "http://res.cloudinary.com/drzsrupmq/image/upload/v1/development/#{guitar.photo_id}", class: "table__photo" %>
-      </div>
+      <% if guitar.photo_id %>
+        <div class="table__photo__content">
+          <%= image_tag "http://res.cloudinary.com/drzsrupmq/image/upload/v1/development/#{guitar.photo_id}", class: "table__photo" %>
+        </div>
+      <% end %>
     </td>
   <% end %>
 </tr>
