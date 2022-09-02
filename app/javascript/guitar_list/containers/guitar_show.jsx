@@ -23,10 +23,12 @@ class GuitarShow extends React.Component {
     this.secondaryPicSelected = this.secondaryPicSelected.bind(this)
   }
 
-  displayPic() {
+  displayPic(e) {
     const deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-    if (deviceWidth < 750) {
-      return
+    if (e.target.id == 'placeholder-photo' || deviceWidth < 750 && e.target.id == 'main-photo') {
+      this.setState({
+        hidden: false
+      })
     }
     this.setState({
       hidden: !this.state.hidden
@@ -55,7 +57,8 @@ class GuitarShow extends React.Component {
     if (this.props.selectedGuitar) {
       const guitar = this.props.selectedGuitar
       const src = `http://res.cloudinary.com/drzsrupmq/image/upload/v1/development/${guitar.photo_id}`
-      const photo = guitar.photo_id ? <img src={src}/> : <img src={guitarPlaceholder}/>
+      const photo = guitar.photo_id ? <img src={src} id='main-photo' onClick={(e) => {this.displayPic(e); this.selectPic(e); this.mainPicSelected();}}/>
+                                    : <img src={guitarPlaceholder} id={'placeholder-photo'}/>
       const mainPicClass = this.state.mainPicSelected ? 'image__container main__pic' : 'image__container secondary__pic'
       const picClass = this.state.hidden ? `guitar__image__zoom__container hidden` : `guitar__image__zoom__container`
       const closeClass = this.state.hidden ? 'close__button' : 'close__button show__close__button'
@@ -66,13 +69,13 @@ class GuitarShow extends React.Component {
               <GuitarTable guitar={guitar} neckPickup={this.props.neckPickup} centerPickup={this.props.centerPickup} bridgePickup={this.props.bridgePickup}/>
             </div>
             <div className="guitar__image__container">
-              <div onClick={(e) => {this.displayPic(); this.selectPic(e); this.mainPicSelected();}} className="guitar__image">
+              <div className="guitar__image">
                 {photo}
               </div>
               <div className="guitar__images">
                 { guitar.photos_ids.length > 0 ?
                 guitar.photos_ids.map(photo =>
-                <div onClick={(e) => {this.displayPic(); this.selectPic(e); this.secondaryPicSelected();}} className="guitar__images__item" key={photo} >
+                <div className="guitar__images__item" key={photo} onClick={(e) => {this.displayPic(e); this.selectPic(e); this.secondaryPicSelected();}}>
                   <ImageLoad image={photo}/>
                 </div>) : ''
                 }
