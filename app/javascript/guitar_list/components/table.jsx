@@ -8,12 +8,14 @@ import hardwareLogo from '../../../assets/images/icon-guitar-hardware.png';
 
 class TableRow extends React.Component {
   render () {
-    return <React.Fragment>
-             <tr>
-               <td>{this.props.title}</td>
-               <td>{this.props.element}{this.props.metric && this.props.element ? this.props.metric : ''}</td>
-             </tr>
-           </React.Fragment>
+    if (this.props.element) {
+      return <React.Fragment>
+               <tr>
+                 <td>{this.props.title}</td>
+                 <td>{this.props.element}{this.props.metric && this.props.element ? this.props.metric : ''}</td>
+               </tr>
+             </React.Fragment>
+    }
   }
 }
 
@@ -61,18 +63,24 @@ export class GuitarTable extends React.Component {
             <tbody>
               <img src={electronicsLogo} alt="electronics-logo" />
               <TableRow element={guitar.pickups_configuration} title={'Configuration'}/>
+              {this.props.neckPickup ?
               <tr>
                 <td>Neck</td>
-                <td>{this.props.neckPickup ? <PickupShow position="Neck" pickup={this.props.neckPickup}/> : ''}</td>
+                <td><PickupShow position="Neck" pickup={this.props.neckPickup}/></td>
               </tr>
+              : ''}
+              {this.props.centerPickup ?
               <tr>
                 <td>Center</td>
-                <td>{this.props.centerPickup ? <PickupShow position="Center" pickup={this.props.centerPickup}/> : ''}</td>
+                <td><PickupShow position="Center" pickup={this.props.centerPickup}/></td>
               </tr>
+              : ''}
+              {this.props.bridgePickup ?
               <tr>
                 <td>Bridge</td>
-                <td>{this.props.bridgePickup ? <PickupShow position="Bridge" pickup={this.props.bridgePickup}/> : ''}</td>
+                <td><PickupShow position="Bridge" pickup={this.props.bridgePickup}/></td>
               </tr>
+              : ''}
             </tbody>
 
             <tbody>
