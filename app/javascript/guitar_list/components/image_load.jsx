@@ -20,8 +20,8 @@ export default class ImageLoad extends React.Component {
     const hidden = this.state.loaded ? '' : 'hidden-photo'
     return <React.Fragment>
              <img className={hidden} src={`https://res.cloudinary.com/drzsrupmq/image/upload/v1661442456/GuitarList/${this.props.image}`} onLoad={this.handleLoad}/>
-             {!this.state.loaded ? <div class="spinner-border text-secondary" role="status">
-               <span class="visually-hidden">Loading...</span>
+             {!this.state.loaded ? <div className="spinner-border text-secondary" role="status">
+               <span className="visually-hidden">Loading...</span>
              </div> : ''}
            </React.Fragment>
   }
