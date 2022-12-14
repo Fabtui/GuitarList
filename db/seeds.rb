@@ -438,7 +438,7 @@ Guitar.create!(
   neck_radius: 254,
   frets_number: 20,
   neck_width_nut: 41,
-  frets_type: '6130 style'
+  frets_type: '6130 style',
   serial_number: '3070574',
   photo_id: 'zas944asyltsdol6xc8snzmtthfe',
   photos_ids: %w[Variax500-0 Variax500-1 Variax500-2 Variax500-3]
